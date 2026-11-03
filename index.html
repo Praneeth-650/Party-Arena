@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Party Arena</title>
+  <link rel="stylesheet" href="/style.css?v=midnight-refresh-1">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand"><span class="brand-mark">✦</span> PARTY ARENA</div>
+      <div class="tag">REAL-TIME PARTY GAMES</div>
+    </header>
+
+    <section id="entry" class="panel hero">
+      <p class="eyebrow">PLAY TOGETHER · FROM ANY DEVICE</p>
+      <h1>Make game night<br><span>unforgettable.</span></h1>
+      <p class="muted">Create a room, invite your friends with a code, and let the chaos begin.</p>
+      <div class="entry-grid">
+        <div class="field">
+          <label>YOUR NICKNAME</label>
+          <input id="name" maxlength="18" placeholder="e.g. Praneeth">
+        </div>
+        <button id="create" class="primary">＋ Create a room</button>
+        <div class="joinrow">
+          <input id="roomCode" maxlength="6" placeholder="ROOM CODE">
+          <button id="join" class="secondary">Join room →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="game" class="hidden">
+      <div class="topline">
+        <div>
+          <div class="eyebrow">ROOM CODE</div>
+          <div id="codeDisplay" class="roomcode">------</div>
+        </div>
+        <div class="topline-actions">
+          <div id="statusPill" class="pill">WAITING FOR PLAYERS</div>
+          <button id="endGameBtn" class="secondary small hidden" type="button">End Game</button>
+        </div>
+      </div>
+
+      <section class="panel voicebar">
+        <div>
+          <div class="voice-heading">
+            <span class="voice-orb">◖</span>
+            <div>
+              <div class="voice-title">Room voice chat</div>
+              <div class="voice-kicker">TALK STRATEGY. MAKE CHAOS.</div>
+            </div>
+          </div>
+          <div id="voiceStatus" class="voice-status">Join voice to talk with everyone in this room.</div>
+        </div>
+        <div class="voice-controls">
+          <button id="voiceJoin" class="primary small">Join voice</button>
+          <button id="voiceMute" class="secondary small" disabled>Mute mic</button>
+          <button id="voiceLeave" class="secondary small" disabled>Leave</button>
+        </div>
+        <div id="voiceAudios" class="voice-audios"></div>
+      </section>
+
+      <div class="layout">
+        <section class="panel mainpanel"><div id="gameContent"></div></section>
+        <aside class="panel sidepanel">
+          <div class="sidehead">
+            <h3>Players <span id="playerCount"></span></h3>
+            <span class="live">● LIVE</span>
+          </div>
+          <div id="players"></div>
+          <hr>
+          <h3>Game activity</h3>
+          <div id="activity" class="activity"></div>
+        </aside>
+      </div>
+    </section>
+    <div id="toast" class="toast hidden"></div>
+  </main>
+  <script src="/client.js?v=midnight-refresh-1"></script>
+</body>
+</html>

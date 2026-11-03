@@ -1,0 +1,9 @@
+{
+  "name": "party-arena",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Real-time 2-8 player party game with Hidden Number and Impostor modes",
+  "main": "server.js",
+  "scripts": {"start": "node server.js", "dev": "node server.js"},
+  "dependencies": {"express": "^4.21.2", "socket.io": "^4.8.1"}
+}
