@@ -168,4 +168,6 @@ io.on('connection',socket=>{
  });
  socket.on('disconnect',()=>{const r=roomOf(socket);if(!r)return;r.players.filter(x=>x.id!==socket.id).forEach(x=>io.to(x.id).emit('voice-peer-left',socket.id));r.players.filter(x=>x.id!==socket.id).forEach(x=>io.to(x.id).emit('voice-speaking',{id:socket.id,speaking:false}));const p=r.players.find(x=>x.id===socket.id);if(p){p.connected=false;say(r,`${p.name} disconnected.`);if(r.currentTurn===socket.id&&['number-play','impostor-clues'].includes(r.phase)){r.currentTurn=nextConnected(r,socket.id);if(r.phase==='number-play'&&!r.currentTurn)finishNumber(r); }if(r.phase==='lobby'&&r.hostId===socket.id){const next=r.players.find(x=>x.connected);if(next)r.hostId=next.id;}}emit(r);});
 });
-server.listen(PORT,()=>console.log(`Party Arena running on http://localhost:${PORT}`));
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Party Arena running on port ${PORT}`);
+});
